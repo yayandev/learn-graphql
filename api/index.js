@@ -1,14 +1,12 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import mongoose from "mongoose";
-import { Book } from "../models/Book.js";
+import { Book } from "./models/Book.js";
 import dotenv from "dotenv";
 dotenv.config();
 
 mongoose
-  .connect(
-    "mongodb+srv://yayanfr20:yayanfr20@cluster0.3nsysmf.mongodb.net/graphql?retryWrites=true&w=majority"
-  )
+  .connect(process.env.DATABASE_URL)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(err));
 
