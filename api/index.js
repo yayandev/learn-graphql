@@ -1,9 +1,8 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import mongoose from "mongoose";
-import { Book } from "./models/Book.js";
+import { Book } from "../models/Book.js";
 import dotenv from "dotenv";
-
 dotenv.config();
 
 mongoose
@@ -70,7 +69,7 @@ const server = new ApolloServer({
 });
 
 const { url } = await startStandaloneServer(server, {
-  listen: { port: 4000 },
+  listen: { port: 4000, path: "/graphql" },
 });
 
 console.log(`🚀  Server ready at: ${url}`);
